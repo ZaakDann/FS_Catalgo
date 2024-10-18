@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar Input a API</title>
+</head>
+<body>
+    <h1>Enviar Input a API</h1>
+    
+        <label for="inputValue">Valor:</label>
+        <input type="number" id="inputValue" name="inputValue" required>
+        <button type="submit" onclick="clicked();">Enviar</button>
+    
+    <p id="result"></p>
+
+    <script>
+        function clicked(){
+
+            const inputValue = document.getElementById('inputValue').value;
+            const resultElement = document.getElementById('result');
+
+            myfunc(inputValue);
+        }
+
+        async function myfunc(numero){
+            let response = await fetch("https://script.google.com/macros/s/AKfycbxIxCtZ1HB92SvrH9eu2rYMW65MBntNZduVgdeIsijttoSt1YN9l4Td_-qmQdP89lv9/exec?numero=" + numero);
+    let info = await response.json();
+    alert(info);
+        }
+    </script>
+</body>
+</html>
